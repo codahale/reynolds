@@ -1,7 +1,7 @@
 Reynolds
 ========
 
-An implementation of a [BERT][http://bert-rpc.org] encoder and decoder in Scala.
+An implementation of a [BERT](http://bert-rpc.org) encoder and decoder in Scala.
 On a bear-skin rug. Wearing only a mustache.
 
 
