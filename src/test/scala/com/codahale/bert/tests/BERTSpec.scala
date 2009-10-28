@@ -236,8 +236,6 @@ class BERTSpec extends Spec with MustMatchers {
   
   // TODO: bigint
   // TODO: really big int
-  // TODO: tuple
   // TODO: large tuple
   // TODO: slightly larger int than normal
-  // TODO: bad encoded value
 }
