@@ -50,7 +50,9 @@ class BERTSpec extends Spec with MustMatchers {
   
   describe("an encoded, unsigned 64-bit integer") {
     it("is the same value as the Ruby gem") {
-      BERT(0x00FDECAFBADL).toList must equal (List(131, 110, 5, 0, 173, 251, 202, 222, 15))
+      BERT(0x00FDECAFBADL).toList must equal (
+        List(131, 110, 5, 0, 173, 251, 202, 222, 15)
+      )
     }
     
     it("decodes to be an unsigned 64-bit integer") {
@@ -63,7 +65,10 @@ class BERTSpec extends Spec with MustMatchers {
   
   describe("an encoded string") {
     it("is the same value as the Ruby gem") {
-      BERT("Bert & Ernie").toList must equal (List(131, 109, 0, 0, 0, 12, 66, 101, 114, 116, 32, 38, 32, 69, 114, 110, 105, 101))
+      BERT("Bert & Ernie").toList must equal (
+        List(131, 109, 0, 0, 0, 12, 66, 101, 114, 116, 32, 38, 32, 69, 114,
+             110, 105, 101)
+      )
     }
     
     it("decodes to be a string") {
@@ -89,7 +94,10 @@ class BERTSpec extends Spec with MustMatchers {
   
   describe("an encoded double") {
     it("is the same value as the Ruby gem") {
-      BERT(0.22).toList must equal (List(131, 99, 50, 46, 50, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 101, 45, 48, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+      BERT(0.22).toList must equal (
+        List(131, 99, 50, 46, 50, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48,
+             48, 48, 48, 101, 45, 48, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+      )
     }
     
     it("decodes to be a double") {
@@ -102,7 +110,10 @@ class BERTSpec extends Spec with MustMatchers {
   
   describe("an encoded boolean true") {
     it("is the same value as the Ruby gem") {
-      BERT(true).toList must equal (List(131, 104, 2, 100, 0, 4, 98, 101, 114, 116, 100, 0, 4, 116, 114, 117, 101))
+      BERT(true).toList must equal (
+        List(131, 104, 2, 100, 0, 4, 98, 101, 114, 116, 100, 0, 4, 116, 114,
+             117, 101)
+      )
     }
     
     it("decodes to be a boolean true") {
@@ -115,7 +126,10 @@ class BERTSpec extends Spec with MustMatchers {
   
   describe("an encoded boolean false") {
     it("is the same value as the Ruby gem") {
-      BERT(false).toList must equal (List(131, 104, 2, 100, 0, 4, 98, 101, 114, 116, 100, 0, 5, 102, 97, 108, 115, 101))
+      BERT(false).toList must equal (
+        List(131, 104, 2, 100, 0, 4, 98, 101, 114, 116, 100, 0, 5, 102, 97,
+             108, 115, 101)
+      )
     }
     
     it("decodes to be a boolean false") {
@@ -128,7 +142,10 @@ class BERTSpec extends Spec with MustMatchers {
   
   describe("an encoded tuple") {
     it("is the same value as the Ruby gem") {
-      BERT(1, 'two, "three").toList must equal (List(131, 104, 3, 97, 1, 100, 0, 3, 116, 119, 111, 109, 0, 0, 0, 5, 116, 104, 114, 101, 101))
+      BERT(1, 'two, "three").toList must equal (
+        List(131, 104, 3, 97, 1, 100, 0, 3, 116, 119, 111, 109, 0, 0, 0, 5,
+             116, 104, 114, 101, 101)
+      )
     }
     
     it("decodes to be a tuple") {
@@ -144,7 +161,9 @@ class BERTSpec extends Spec with MustMatchers {
   
   describe("an encoded list") {
     it("is the same value as the Ruby gem") {
-      BERT(List(1, 2, 3)).toList must equal (List(131, 108, 0, 0, 0, 3, 97, 1, 97, 2, 97, 3, 106))
+      BERT(List(1, 2, 3)).toList must equal (
+        List(131, 108, 0, 0, 0, 3, 97, 1, 97, 2, 97, 3, 106)
+      )
     }
     
     it("decodes to be a list") {
@@ -172,7 +191,10 @@ class BERTSpec extends Spec with MustMatchers {
   
   describe("an encoded null") {
     it("is the same value as the Ruby gem") {
-      BERT(null).toList must equal (List(131, 104, 2, 100, 0, 4, 98, 101, 114, 116, 100, 0, 3, 110, 105, 108))
+      BERT(null).toList must equal (
+        List(131, 104, 2, 100, 0, 4, 98, 101, 114, 116, 100, 0, 3, 110,
+             105, 108)
+      )
     }
     
     it("decodes to be a null value") {
@@ -184,7 +206,11 @@ class BERTSpec extends Spec with MustMatchers {
   
   describe("an encoded map") {
     it("is the same value as the Ruby gem") {
-      BERT(Map(1 -> 2, 3 -> 4)).toList must equal (List(131, 104, 3, 100, 0, 4, 98, 101, 114, 116, 100, 0, 4, 100, 105, 99, 116, 108, 0, 0, 0, 2, 104, 2, 97, 1, 97, 2, 104, 2, 97, 3, 97, 4, 106))
+      BERT(Map(1 -> 2, 3 -> 4)).toList must equal (
+        List(131, 104, 3, 100, 0, 4, 98, 101, 114, 116, 100, 0, 4, 100, 105,
+             99, 116, 108, 0, 0, 0, 2, 104, 2, 97, 1, 97, 2, 104, 2, 97, 3,
+             97, 4, 106)
+      )
     }
     
     it("decodes to be a map") {
