@@ -3,8 +3,9 @@ package com.codahale.bert
 import java.io.{InputStream, OutputStream, ByteArrayOutputStream,
                 ByteArrayInputStream, DataOutputStream, DataInputStream,
                 IOException}
+import java.util.NoSuchElementException
 
-class EncodingException(msg: String) extends Exception(msg)
+class EncodingException(msg: String) extends IOException(msg)
 
 private object Tags extends Enumeration {
   type Tags = Value
@@ -23,7 +24,14 @@ private object Tags extends Enumeration {
 }
 
 private class TagInputStream(input: InputStream) extends DataInputStream(input) {
-  def readTag = Tags(readByte)
+  def readTag: Tags.Value = {
+    val id = readByte
+    try {
+      return Tags(id)
+    } catch {
+      case e: NoSuchElementException => throw new EncodingException("Unknown tag id: " + id)
+    }
+  }
 }
 
 private class TagOutputStream(output: OutputStream) extends DataOutputStream(output) {
@@ -36,7 +44,7 @@ object BERT {
   def parse(input: InputStream): BERT = {
     val in = new TagInputStream(input)
     if (in.readUnsignedByte() != Tags.Header.id) {
-      throw new IOException("Not a valid BERT message.")
+      throw new EncodingException("Not a valid BERT message.")
     }
     BERT(readObject(in))
   }
