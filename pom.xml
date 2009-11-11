@@ -21,7 +21,7 @@
 			<id>coda</id>
 			<name>Coda Hale</name>
 			<email>coda.hale@gmail.com</email>
-			<timezone>8</timezone>
+			<timezone>-8</timezone>
 			<url>http://www.codahale.com</url>
 			<roles>
 				<role>Cannonball Jogger</role>
